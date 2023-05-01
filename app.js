@@ -5,12 +5,13 @@ const port = 3000
 const restaurantsList = require('./restaurant.json')
 // 設定mongoose連線
 const mongoose = require('mongoose')
+const Restaurant = require('./models/Restaurant')
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 const db = mongoose.connection
 db.on('error', () => {
@@ -28,7 +29,10 @@ app.use(express.static('public'))
 
 // 主頁路由
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantsList.results })
+  Restaurant.find()
+    .lean()
+    .then(restaurants => res.render('index', { restaurants }))
+    .catch(error => console.error(error))
 })
 
 // show 頁面的路由
