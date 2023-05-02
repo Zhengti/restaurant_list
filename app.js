@@ -59,6 +59,26 @@ app.get('/restaurants/:id', (req, res) => {
     .catch(err => console.log(err))
 })
 
+// 前往edit頁面的路由
+app.get('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then((restaurant) => res.render('edit', { restaurant }))
+    .catch(err => console.log(err))
+})
+
+// findByIdAndUpdate在 Mongoose 6.0 版本中將被移除，以下設定是為了不產生警告，但findByIdAndUpdate不知道是否還會支援。
+mongoose.set('useFindAndModify', false)
+
+// edit 將修改後的資料傳給資料庫的路由
+app.post('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  Restaurant.findByIdAndUpdate(id, req.body)
+    .then(() => res.redirect(`/restaurants/${id}`))
+    .catch(err => console.log(err))
+})
+
 // 搜尋餐廳名稱、類別的路由
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword

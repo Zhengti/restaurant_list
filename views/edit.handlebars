@@ -1,0 +1,67 @@
+<form action="/restaurants/{{restaurant._id}}/edit" method="POST">
+  <div class="form mt-3 mb-3">
+    <div class="form-group mt-2">
+      <label for="name">餐廳名稱</label>
+      <input type="text" class="form-control" placeholder="請輸入餐廳名稱..." name="name" id="name"
+        value="{{ restaurant.name}}">
+    </div>
+
+    <div class="form-group mt-2">
+      <label for="name_en">餐廳英文名稱</label>
+      <input type="text" class="form-control" placeholder="請輸入餐廳英文名稱..." name="name_en" id="name_en"
+        value="{{ restaurant.name_en}}">
+    </div>
+
+    <div class="form-group mt-2">
+      <label for="category">餐廳類別</label>
+      <input list="category" class="form-control" placeholder="請選擇餐廳類別" name="category"
+        value="{{ restaurant.category}}">
+      <datalist id="category">
+        <option>中東料理</option>
+        <option>日本料理</option>
+        <option>義式餐廳</option>
+        <option>美式</option>
+        <option>酒吧</option>
+        <option>其他...</option>
+      </datalist>
+    </div>
+
+    <div class="form-group mt-2">
+      <label for="image">餐廳照片網址</label>
+      <input type="text" class="form-control" placeholder="請貼上照片網址" name="image" id="image"
+        value="{{ restaurant.image}}">
+    </div>
+
+    <div class="form-group mt-2">
+      <label for="location">餐廳地址</label>
+      <input type="text" class="form-control" placeholder="台北市..." name="location" id="location"
+        value="{{ restaurant.location}}">
+    </div>
+
+    <div class="form-group mt-2">
+      <label for="phone">電話：</label>
+      <input type="text" class="form-control" placeholder="" name="phone" id="phone" value="{{ restaurant.phone}}">
+    </div>
+
+    <div class="form-group mt-2">
+      <label for="google_map">Google地圖網址：</label>
+      <input type="text" class="form-control" placeholder="http://..." name="google_map" id="google_map"
+        value="{{ restaurant.google_map}}">
+    </div>
+
+    <div class="form-group mt-2">
+      <label for="rating">評價：</label>
+      <input type="Number" class="form-control" placeholder="請輸入0~5間的整數" name="rating" id="rating" min="0" max="5"
+        value="{{ restaurant.rating}}">
+    </div>
+
+    <div class="form-group mt-2">
+      <label for="description">相關介紹：</label>
+      <input type="text" class="form-control" placeholder="" name="description" id="description"
+        value="{{ restaurant.description}}">
+    </div>
+
+    <button class="btn btn-lg btn-primary m-4 " type="submit">save</button>
+  </div>
+</form>
+</div>
