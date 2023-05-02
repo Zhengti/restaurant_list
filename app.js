@@ -49,11 +49,14 @@ app.post('/restaurants', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
-// show 頁面的路由
-app.get('/restaurants/:restaurant_id', (req, res) => {
-  // console.log(req.params.restaurant_id)
-  const restaurant = restaurantsList.results.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
-  res.render('show', { restaurant: restaurant })
+
+// show(detail) 頁面的路由
+app.get('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then((restaurant) => res.render('show', { restaurant }))
+    .catch(err => console.log(err))
 })
 
 // 搜尋餐廳名稱、類別的路由
