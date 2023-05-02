@@ -78,6 +78,15 @@ header {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.form {
+  width: 50%;
+  margin: 0 auto;
+  background-color: rgba(231, 242, 244, 0.824);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 36px;
+  border-radius: 8px;
+}
+
 @media screen and (max-width: 992px) {
 
   .card img {

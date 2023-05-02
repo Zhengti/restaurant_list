@@ -1,32 +1,59 @@
 <form action="/restaurants" method="POST">
-  <div class="wrapper" style="display:inline-block;">
-    <div>
-      <input type="text" placeholder="name" name="name" id="name">
+  <div class="form mt-3 mb-3">
+    <div class="form-group mt-2">
+      <label for="name">餐廳名稱</label>
+      <input type="text" class="form-control" placeholder="請輸入餐廳名稱..." name="name" id="name">
     </div>
-    <div>
-      <input type="text" placeholder="name_en" name="name_en" id="name_en">
+
+    <div class="form-group mt-2">
+      <label for="name_en">餐廳英文名稱</label>
+      <input type="text" class="form-control" placeholder="請輸入餐廳英文名稱..." name="name_en" id="name_en">
     </div>
-    <div>
-      <input type="text" placeholder="category" name="category" id="category">
+
+    <div class="form-group mt-2">
+      <label for="category">餐廳類別</label>
+      <input list="category" class="form-control" placeholder="請選擇餐廳類別" name="category">
+      <datalist id="category">
+        <option>中東料理</option>
+        <option>日本料理</option>
+        <option>義式餐廳</option>
+        <option>美式</option>
+        <option>酒吧</option>
+        <option>其他...</option>
+      </datalist>
     </div>
-    <div>
-      <input type="text" placeholder="image" name="image" id="image">
+
+    <div class="form-group mt-2">
+      <label for="image">餐廳照片網址</label>
+      <input type="text" class="form-control" placeholder="請貼上照片網址" name="image" id="image">
     </div>
-    <div>
-      <input type="text" placeholder="location" name="location" id="location">
+
+    <div class="form-group mt-2">
+      <label for="location">餐廳地址</label>
+      <input type="text" class="form-control" placeholder="台北市..." name="location" id="location">
     </div>
-    <div>
-      <input type="text" placeholder="phone" name="phone" id="phone">
+
+    <div class="form-group mt-2">
+      <label for="phone">電話：</label>
+      <input type="text" class="form-control" placeholder="" name="phone" id="phone">
     </div>
-    <div>
-      <input type="text" placeholder="google_map" name="google_map" id="google_map">
+
+    <div class="form-group mt-2">
+      <label for="google_map">Google地圖網址：</label>
+      <input type="text" class="form-control" placeholder="http://..." name="google_map" id="google_map">
     </div>
-    <div>
-      <input type="Number" placeholder="rating" name="rating" id="rating">
+
+    <div class="form-group mt-2">
+      <label for="rating">評價：</label>
+      <input type="Number" class="form-control" placeholder="請輸入0~5間的整數" name="rating" id="rating" min="0" max="5">
     </div>
-    <div>
-      <input type="text" placeholder="description" name="description" id="description">
+
+    <div class="form-group mt-2">
+      <label for="description">相關介紹：</label>
+      <input type="text" class="form-control" placeholder="" name="description" id="description">
     </div>
-    <button type="submit">新增餐廳</button>
+
+    <button class="btn btn-lg btn-primary m-4 " type="submit">新增餐廳</button>
   </div>
 </form>
+</div>
