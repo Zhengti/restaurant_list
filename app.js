@@ -7,6 +7,9 @@ const restaurantsList = require('./restaurant.json')
 const mongoose = require('mongoose')
 const Restaurant = require('./models/Restaurant')
 
+const bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({ extended: true }))
+
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
@@ -35,6 +38,17 @@ app.get('/', (req, res) => {
     .catch(error => console.error(error))
 })
 
+// 新增餐廳按鈕的路由
+app.get('/restaurants/new', (req, res) => {
+  return res.render('new')
+})
+
+//新增餐廳到資料庫的路由
+app.post('/restaurants', (req, res) => {
+  return Restaurant.create(req.body)
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
 // show 頁面的路由
 app.get('/restaurants/:restaurant_id', (req, res) => {
   // console.log(req.params.restaurant_id)
