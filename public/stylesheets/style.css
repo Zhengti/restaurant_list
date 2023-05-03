@@ -97,6 +97,16 @@ header {
   color: #cd2828;
 }
 
+.back-button {
+  color: #666666;
+  text-decoration: none;
+  outline: 2px #226089;
+}
+
+.back-button:hover {
+  color: #302f2e
+}
+
 @media screen and (max-width: 992px) {
 
   .card img {

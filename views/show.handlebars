@@ -6,6 +6,23 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">
+      {{!-- 編輯、詳細資訊、刪除按鈕 --}}
+      <div class="btn-group d-flex justify-content-end" role="group" aria-label="Basic outlined example">
+        <a href="/restaurants/{{this._id}}/edit">
+          <button type="button" class="btn">Edit</button>
+        </a>
+
+        <a href="/restaurants/{{this._id}}">
+          <button type="button" class="btn">Detail</button>
+        </a>
+
+        <form action="./restaurants/{{this._id}}/delete" method="POST" style="display: inline">
+          <button type="submit" class="btn btn-delete btn-outline-danger">Delete</button>
+        </form>
+
+        <a href="/" class="back-button">
+          <button type="button" class="btn">Back</button></a>
+      </div>
 
       <p class="mb-1">
         <span class="text-secondary">
