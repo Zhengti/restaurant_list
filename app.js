@@ -2,8 +2,6 @@ const express = require('express')
 const app = express()
 const exphbs = require('express-handlebars')
 const port = 3000
-const restaurantsList = require('./restaurant.json')
-// 設定mongoose連線
 const mongoose = require('mongoose')
 const Restaurant = require('./models/Restaurant')
 
@@ -91,16 +89,19 @@ app.post('/restaurants/:id/delete', (req, res) => {
 // 搜尋餐廳名稱、類別的路由
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
+  const keywords = req.query.keyword.trim().toLowerCase()
   // 取得/search 問號後面的關鍵字 console.log(req.query.keyword) 檢查是否取得
-  const restaurants = restaurantsList.results.filter(restaurant => {
-    return restaurant.name.toLowerCase().includes(keyword.toLowerCase())
-  })
-  // 篩選餐廳名稱關鍵字
-  const restaurantCategory = restaurantsList.results.filter(restaurant => {
-    return restaurant.category.toLowerCase().includes(keyword.toLowerCase())
-  })
-  // 篩選餐廳類別關鍵字
-  res.render('index', { restaurants: restaurants, keyword: keyword, restaurantCategory: restaurantCategory })
+  Restaurant.find()
+    .lean()
+    .then(restaurant => {
+      const filterRestaurant = restaurant.filter(
+        data =>
+          data.name.toLowerCase().includes(keywords) ||
+          data.category.includes(keywords)
+      )
+      res.render('index', { restaurants: filterRestaurant, keywords })
+    })
+    .catch(err => console.log(err))
 })
 
 app.listen(port, () => {
