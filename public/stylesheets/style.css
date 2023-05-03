@@ -87,6 +87,16 @@ header {
   border-radius: 8px;
 }
 
+.btn {
+  margin-bottom: 5px;
+  color: #666666;
+}
+
+.btn-delete {
+  margin-right: 5px;
+  color: #cd2828;
+}
+
 @media screen and (max-width: 992px) {
 
   .card img {
